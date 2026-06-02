@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Profesional - Destacá tu Perfil</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:#f8f6f1;color:#1a1a1a;}
+
+/* HERO */
+.hero{
+  background:#0d1b2a;
+  color:white;
+  padding:100px 20px 80px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:rgba(34,197,94,0.07);
+  top:-200px;left:-100px;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  width:400px;height:400px;
+  border-radius:50%;
+  background:rgba(59,130,246,0.06);
+  bottom:-100px;right:-50px;
+}
+.hero-content{position:relative;z-index:1;}
+.hero-badge{
+  display:inline-block;
+  background:rgba(34,197,94,0.15);
+  color:#4ade80;
+  border:1px solid rgba(34,197,94,0.3);
+  padding:6px 18px;
+  border-radius:50px;
+  font-size:0.8rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  line-height:1.15;
+  margin-bottom:20px;
+  max-width:750px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.hero h1 span{color:#4ade80;}
+.hero p{
+  font-size:1.1rem;
+  max-width:600px;
+  margin:0 auto 36px;
+  color:rgba(255,255,255,0.7);
+  font-weight:300;
+  line-height:1.7;
+}
+.btn-hero{
+  display:inline-block;
+  padding:16px 36px;
+  background:#22c55e;
+  color:white;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:500;
+  font-size:1rem;
+  transition:.3s;
+  border:none;
+  cursor:pointer;
+}
+.btn-hero:hover{background:#16a34a;transform:translateY(-2px);}
+
+/* STATS */
+.stats{
+  background:white;
+  padding:50px 20px;
+  display:flex;
+  justify-content:center;
+  gap:60px;
+  flex-wrap:wrap;
+  border-bottom:1px solid #e5e7eb;
+}
+.stat{text-align:center;}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;
+  color:#0d1b2a;
+  font-weight:700;
+}
+.stat-num span{color:#22c55e;}
+.stat-label{font-size:0.85rem;color:#6b7280;margin-top:4px;}
+
+/* SECTIONS */
+.section{padding:80px 20px;max-width:1100px;margin:auto;}
+.section-tag{
+  display:inline-block;
+  background:#dcfce7;
+  color:#15803d;
+  padding:4px 14px;
+  border-radius:50px;
+  font-size:0.8rem;
+  font-weight:500;
+  margin-bottom:14px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  margin-bottom:16px;
+  color:#0d1b2a;
+}
+.section-sub{color:#6b7280;font-size:1.05rem;line-height:1.7;max-width:560px;}
+
+/* PROBLEM */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.problem-grid img{width:100%;border-radius:20px;filter:grayscale(20%);}
+.problem-points{margin-top:32px;display:flex;flex-direction:column;gap:20px;}
+.problem-point{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:18px;
+  background:#fff;
+  border-radius:14px;
+  border:1px solid #e5e7eb;
+}
+.point-icon{
+  width:36px;height:36px;min-width:36px;
+  background:#fee2e2;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.point-icon.ok{background:#dcfce7;}
+.problem-point p{font-size:0.92rem;color:#374151;line-height:1.6;}
+.problem-point strong{color:#0d1b2a;}
+
+/* PLANES */
+.planes-bg{background:#0d1b2a;padding:80px 20px;}
+.planes-inner{max-width:1100px;margin:auto;}
+.planes-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:white;text-align:center;margin-bottom:8px;}
+.planes-sub{text-align:center;color:rgba(255,255,255,0.6);margin-bottom:50px;font-size:1rem;}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.plan-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:36px 28px;
+  position:relative;
+  transition:.3s;
+}
+.plan-card:hover{background:rgba(255,255,255,0.08);}
+.plan-card.featured{
+  background:white;
+  border-color:white;
+}
+.plan-card.featured .plan-name{color:#0d1b2a;}
+.plan-card.featured .plan-price{color:#22c55e;}
+.plan-card.featured .plan-feature{color:#374151;}
+.plan-card.featured .plan-feature::before{color:#22c55e;}
+.popular-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:#22c55e;
+  color:white;
+  padding:4px 18px;
+  border-radius:50px;
+  font-size:0.78rem;
+  font-weight:500;
+  white-space:nowrap;
+}
+.plan-name{font-family:'Playfair Display',serif;font-size:1.6rem;color:white;margin-bottom:8px;}
+.plan-price{font-size:2.8rem;font-weight:700;color:rgba(255,255,255,0.9);margin:16px 0;}
+.plan-price span{font-size:1rem;font-weight:400;opacity:0.6;}
+.plan-features{list-style:none;margin:24px 0;display:flex;flex-direction:column;gap:10px;}
+.plan-feature{
+  color:rgba(255,255,255,0.75);
+  font-size:0.92rem;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.plan-feature::before{content:'✓';color:#4ade80;font-weight:700;min-width:16px;}
+.btn-plan{
+  display:block;
+  text-align:center;
+  padding:14px;
+  border-radius:50px;
+  font-weight:500;
+  font-size:0.95rem;
+  text-decoration:none;
+  cursor:pointer;
+  border:none;
+  transition:.3s;
+  width:100%;
+}
+.btn-plan-outline{
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,0.35);
+  color:white;
+}
+.btn-plan-outline:hover{background:rgba(255,255,255,0.1);}
+.btn-plan-solid{
+  background:#22c55e;
+  color:white;
+}
+.btn-plan-solid:hover{background:#16a34a;}
+
+/* TESTIMONIALS */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:50px;}
+.test-card{
+  background:white;
+  padding:28px;
+  border-radius:18px;
+  border:1px solid #e5e7eb;
+}
+.stars{color:#f59e0b;font-size:1rem;margin-bottom:12px;}
+.test-text{font-size:0.93rem;color:#374151;line-height:1.7;font-style:italic;}
+.test-author{margin-top:16px;font-size:0.82rem;color:#9ca3af;font-weight:500;}
+
+/* FAQ */
+.faq-wrap{max-width:720px;margin:50px auto 0;}
+.faq-item{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:20px 24px;
+  margin-bottom:12px;
+}
+.faq-q{font-weight:500;color:#0d1b2a;margin-bottom:8px;font-size:0.97rem;}
+.faq-a{color:#6b7280;font-size:0.92rem;line-height:1.6;}
+
+/* MODAL OVERLAY */
+.modal-overlay{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.modal-overlay.active{display:flex;}
+.modal{
+  background:white;
+  border-radius:24px;
+  padding:44px 40px;
+  max-width:560px;
+  width:100%;
+  max-height:90vh;
+  overflow-y:auto;
+  position:relative;
+  animation:slideUp .3s ease;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.modal-close{
+  position:absolute;top:16px;right:20px;
+  background:none;border:none;
+  font-size:1.5rem;cursor:pointer;
+  color:#9ca3af;
+  line-height:1;
+}
+.modal-close:hover{color:#374151;}
+.modal-plan-badge{
+  display:inline-block;
+  background:#dcfce7;color:#15803d;
+  padding:4px 14px;border-radius:50px;
+  font-size:0.8rem;font-weight:500;
+  margin-bottom:12px;
+}
+.modal h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;color:#0d1b2a;
+  margin-bottom:6px;
+}
+.modal-sub{color:#6b7280;font-size:0.93rem;margin-bottom:28px;line-height:1.6;}
+.form-group{margin-bottom:18px;}
+label{display:block;font-size:0.85rem;font-weight:500;color:#374151;margin-bottom:6px;}
+input,textarea,select{
+  width:100%;
+  padding:12px 14px;
+  border:1.5px solid #e5e7eb;
+  border-radius:10px;
+  font-size:0.95rem;
+  font-family:'DM Sans',sans-serif;
+  color:#1a1a1a;
+  transition:.2s;
+  background:white;
+}
+input:focus,textarea:focus,select:focus{
+  outline:none;
+  border-color:#22c55e;
+  box-shadow:0 0 0 3px rgba(34,197,94,0.12);
+}
+textarea{resize:vertical;min-height:100px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.btn-submit{
+  width:100%;
+  padding:16px;
+  background:#22c55e;
+  color:white;
+  border:none;
+  border-radius:50px;
+  font-size:1rem;
+  font-weight:500;
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:.3s;
+  margin-top:8px;
+}
+.btn-submit:hover{background:#16a34a;transform:translateY(-1px);}
+.form-note{text-align:center;font-size:0.78rem;color:#9ca3af;margin-top:12px;}
+.form-note strong{color:#374151;}
+
+/* CTA FINAL */
+.cta-final{
+  background:linear-gradient(135deg,#0d1b2a,#1a3350);
+  padding:80px 20px;
+  text-align:center;
+  color:white;
+}
+.cta-final h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:16px;}
+.cta-final p{color:rgba(255,255,255,0.65);max-width:480px;margin:0 auto 32px;font-size:1rem;line-height:1.7;}
+
+footer{background:#0a1120;color:rgba(255,255,255,0.4);text-align:center;padding:24px;font-size:0.83rem;}
+
+@media(max-width:768px){
+  .problem-grid{grid-template-columns:1fr;}
+  .problem-grid img{display:none;}
+  .stats{gap:30px;}
+  .modal{padding:30px 24px;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Servicio Profesional de CV</div>
+    <h1>¿Tu CV no consigue<br><span>las entrevistas que merecés?</span></h1>
+    <p>Muchos profesionales pierden oportunidades por un currículum mal presentado. Nosotros lo transformamos en una herramienta que abre puertas.</p>
+    <button class="btn-hero" onclick="abrirFormulario('General')">Quiero mi CV Profesional</button>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">+200<span>✦</span></div><div class="stat-label">CVs entregados</div></div>
+  <div class="stat"><div class="stat-num">24-48<span>h</span></div><div class="stat-label">Tiempo de entrega</div></div>
+  <div class="stat"><div class="stat-num">98<span>%</span></div><div class="stat-label">Clientes satisfechos</div></div>
+</div>
+
+<!-- PROBLEMA -->
+<section class="section">
+  <div class="problem-grid">
+    <div>
+      <span class="section-tag">El problema</span>
+      <h2 class="section-title">Los reclutadores deciden en segundos</h2>
+      <p class="section-sub">Un CV mal estructurado puede costarte el trabajo de tus sueños, aunque tengas el perfil ideal para el puesto.</p>
+      <div class="problem-points">
+        <div class="problem-point">
+          <div class="point-icon">⏱</div>
+          <p><strong>6 segundos</strong> es el tiempo promedio que un reclutador dedica a revisar un CV antes de decidir.</p>
+        </div>
+        <div class="problem-point">
+          <div class="point-icon">❌</div>
+          <p>Un diseño anticuado o texto mal organizado <strong>genera una mala primera impresión</strong> inmediata.</p>
+        </div>
+        <div class="problem-point">
+          <div class="point-icon ok">✔</div>
+          <p>Un CV profesional y bien redactado <strong>multiplica tus posibilidades</strong> de ser llamado a entrevista.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="Profesional revisando CV">
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="planes-bg">
+  <div class="planes-inner">
+    <h2 class="planes-title">Elegí tu plan</h2>
+    <p class="planes-sub">Completás el formulario y nosotros hacemos el resto.</p>
+    <div class="cards-grid">
+
+      <div class="plan-card">
+        <p class="plan-name">Básico</p>
+        <div class="plan-price">USD 7<span> / único pago</span></div>
+        <ul class="plan-features">
+          <li class="plan-feature">Diseño profesional moderno</li>
+          <li class="plan-feature">Formato PDF listo para enviar</li>
+          <li class="plan-feature">1 revisión incluida</li>
+          <li class="plan-feature">Entrega en 24-48 hs</li>
+        </ul>
+        <button class="btn-plan btn-plan-outline" onclick="abrirFormulario('Básico — USD 7')">Quiero este plan</button>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="popular-badge">⭐ Más elegido</div>
+        <p class="plan-name">Profesional</p>
+        <div class="plan-price">USD 15<span> / único pago</span></div>
+        <ul class="plan-features">
+          <li class="plan-feature">Diseño premium personalizado</li>
+          <li class="plan-feature">Optimización del contenido</li>
+          <li class="plan-feature">PDF listo para enviar</li>
+          <li class="plan-feature">2 revisiones incluidas</li>
+          <li class="plan-feature">Entrega prioritaria</li>
+        </ul>
+        <button class="btn-plan btn-plan-solid" onclick="abrirFormulario('Profesional — USD 15')">Quiero este plan</button>
+      </div>
+
+      <div class="plan-card">
+        <p class="plan-name">Premium</p>
+        <div class="plan-price">USD 25<span> / único pago</span></div>
+        <ul class="plan-features">
+          <li class="plan-feature">CV Profesional completo</li>
+          <li class="plan-feature">Carta de presentación</li>
+          <li class="plan-feature">Optimización de LinkedIn</li>
+          <li class="plan-feature">Revisiones ilimitadas</li>
+          <li class="plan-feature">Soporte personalizado</li>
+        </ul>
+        <button class="btn-plan btn-plan-outline" onclick="abrirFormulario('Premium — USD 25')">Quiero este plan</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <span class="section-tag">Testimonios</span>
+  <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="test-text">"Conseguí tres entrevistas en la primera semana después de actualizar mi CV. El cambio fue enorme."</p>
+      <p class="test-author">— Valentina G., Córdoba</p>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="test-text">"Quedó mucho más profesional de lo que esperaba. La atención fue excelente y la entrega fue rapidísima."</p>
+      <p class="test-author">— Martín R., Buenos Aires</p>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="test-text">"Muy buena experiencia. El CV quedó impecable y el proceso fue muy simple. Lo recomiendo totalmente."</p>
+      <p class="test-author">— Sofía L., Rosario</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="padding-top:0;">
+  <span class="section-tag">Preguntas frecuentes</span>
+  <h2 class="section-title">Todo lo que necesitás saber</h2>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <p class="faq-q">¿Cuánto tarda la entrega?</p>
+      <p class="faq-a">Entre 24 y 48 horas hábiles después de recibir tu información completa por WhatsApp.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Cómo se realiza el pago?</p>
+      <p class="faq-a">Aceptamos AstroPay, transferencia bancaria o link de pago. Te lo indicamos por WhatsApp antes de comenzar.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿Qué información debo enviar?</p>
+      <p class="faq-a">Solo completás el formulario con tus datos laborales, educativos y habilidades. Nosotros nos encargamos del resto.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">¿En qué formato recibo mi CV?</p>
+      <p class="faq-a">En PDF de alta calidad, listo para adjuntar en cualquier postulación laboral.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>🚀 Tu próximo empleo empieza con un mejor CV</h2>
+  <p>Completá el formulario en menos de 3 minutos y te contactamos por WhatsApp para coordinar.</p>
+  <button class="btn-hero" onclick="abrirFormulario('General')">Empezar ahora</button>
+</section>
+
+<footer>© 2026 CV Profesional | Todos los derechos reservados</footer>
+
+<!-- MODAL FORMULARIO -->
+<div class="modal-overlay" id="modalOverlay" onclick="cerrarSiEsFondo(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="cerrarFormulario()">×</button>
+    <div class="modal-plan-badge" id="modalBadge">Plan Profesional</div>
+    <h2>Contanos sobre vos</h2>
+    <p class="modal-sub">Completá estos datos y te contactamos por WhatsApp para darte todos los detalles.</p>
+
+    <div class="form-group">
+      <label for="nombre">Nombre y apellido *</label>
+      <input type="text" id="nombre" placeholder="Ej: Juan García">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="telefono">Teléfono / WhatsApp *</label>
+        <input type="tel" id="telefono" placeholder="Ej: 11 2345-6789">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="tu@email.com">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="profesion">Profesión o rubro *</label>
+      <input type="text" id="profesion" placeholder="Ej: Contador, Diseñador, Ingeniero...">
+    </div>
+
+    <div class="form-group">
+      <label for="experiencia">Años de experiencia</label>
+      <select id="experiencia">
+        <option value="">Seleccioná una opción</option>
+        <option>Sin experiencia (primer empleo)</option>
+        <option>Menos de 2 años</option>
+        <option>2 a 5 años</option>
+        <option>5 a 10 años</option>
+        <option>Más de 10 años</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="objetivo">¿A qué tipo de puesto te querés postular?</label>
+      <input type="text" id="objetivo" placeholder="Ej: Analista de datos, Community Manager...">
+    </div>
+
+    <div class="form-group">
+      <label for="info">Información adicional (opcional)</label>
+      <textarea id="info" placeholder="Contanos brevemente tu experiencia, habilidades o algo importante que quieras incluir en tu CV..."></textarea>
+    </div>
+
+    <button class="btn-submit" onclick="enviarWhatsApp()">
+      📲 Enviar por WhatsApp
+    </button>
+    <p class="form-note">Al hacer clic serás redirigido a WhatsApp con tu información. <strong>No compartimos tus datos con terceros.</strong></p>
+  </div>
+</div>
+
+<script>
+var planSeleccionado = '';
+
+function abrirFormulario(plan) {
+  planSeleccionado = plan;
+  document.getElementById('modalBadge').textContent = plan === 'General' ? 'Solicitar CV' : 'Plan ' + plan;
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarFormulario() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function cerrarSiEsFondo(e) {
+  if (e.target === document.getElementById('modalOverlay')) cerrarFormulario();
+}
+
+function enviarWhatsApp() {
+  var nombre = document.getElementById('nombre').value.trim();
+  var telefono = document.getElementById('telefono').value.trim();
+  var profesion = document.getElementById('profesion').value.trim();
+
+  if (!nombre || !telefono || !profesion) {
+    alert('Por favor completá los campos obligatorios: Nombre, Teléfono y Profesión.');
+    return;
+  }
+
+  var email = document.getElementById('email').value.trim();
+  var experiencia = document.getElementById('experiencia').value;
+  var objetivo = document.getElementById('objetivo').value.trim();
+  var info = document.getElementById('info').value.trim();
+
+  var msg = '¡Hola! Quiero solicitar un CV Profesional. Estos son mis datos:\n\n';
+  msg += '📋 *Plan:* ' + planSeleccionado + '\n';
+  msg += '👤 *Nombre:* ' + nombre + '\n';
+  msg += '📱 *Teléfono:* ' + telefono + '\n';
+  if (email) msg += '📧 *Email:* ' + email + '\n';
+  msg += '💼 *Profesión/Rubro:* ' + profesion + '\n';
+  if (experiencia) msg += '📅 *Experiencia:* ' + experiencia + '\n';
+  if (objetivo) msg += '🎯 *Puesto objetivo:* ' + objetivo + '\n';
+  if (info) msg += '📝 *Información adicional:* ' + info + '\n';
+
+  var encoded = encodeURIComponent(msg);
+  var url = 'https://wa.me/5492244465162?text=' + encoded;
+  window.open(url, '_blank');
+  cerrarFormulario();
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') cerrarFormulario();
+});
+</script>
+</body>
+</html>
